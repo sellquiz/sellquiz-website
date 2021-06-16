@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "bootstrap": "^5.0.1",
+    "codemirror": "^5.61.1",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "mathjax": "^3.1.4",
     "mathjs": "^9.4.2",
