@@ -4,7 +4,6 @@
 <body>
 	<?php include 'nav.php'; ?>
 
-	
 	<div class="container">
 		<div class="row">
 			<div class="col-sm">
@@ -19,6 +18,32 @@
 
 	<br/>
 
+	<div class="container">
+		<div class="row">
+			<div class="col-sm">
+				<h2>Standalone Version</h2>
+				<ul>
+					<li>The <b>standalone version</b> of SELL can be integrated into existing websites easily.</li>
+					<li>Visit <a href="https://github.com/sellquiz/sellquiz-standalone/">https://github.com/sellquiz/sellquiz-standalone/</a> and refer to the descriptions.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<br/>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm">
+				<h2>Moodle and Ilias Plugins</h2>
+				<ul>
+					<li>... will be provided later ...</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+<!--
 	<div class="container">
 		<div class="row">
 			<div class="col-sm">
@@ -106,6 +131,8 @@ Calculate the __determinant__ of $ "A" $:
 			</div>
 		</div>
 	</div>
+
+-->
 
 	<br/>
 

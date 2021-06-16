@@ -80,7 +80,7 @@ Calculate $ prod_(i=1)^n a = #a^n $
 
 <div class="bg-light border-left p-2" style="border-width: 4px !important;">
 <pre class="p-0 m-0">
-<code><?php echo file_get_contents("libs/sell-grammar.txt"); ?></code>
+<code><?php echo file_get_contents("node_modules/sellquiz/grammar.txt"); ?></code>
 </pre>
 </div>
 
@@ -119,7 +119,7 @@ Calculate $ 3+4 = #7 $.</code>
 		}*/
 
 		let q1 = `Sum\nCalculate $ 3+4 = #7 $.`;
-		var sellexample1 = new Sell("en", "sellexample1");
+		var sellexample1 = new sell.Sell("en", "sellexample1");
 		if(!sellexample1.importQuestions(q1))
 			alert(sellexample1.log);
 		let sellexample1Div = document.getElementById("sellexample1");
@@ -128,17 +128,13 @@ Calculate $ 3+4 = #7 $.</code>
 		sellexample1Div.innerHTML = html1;
 
 		let q2 = `Sum\n\ta, b in { 2, 3, ..., 10 }\n\tc := a+b\nCalculate $ a+b = #c $.`;
-		var sellexample2 = new Sell("en", "sellexample2");
+		var sellexample2 = new sell.Sell("en", "sellexample2");
 		if(!sellexample2.importQuestions(q2))
 			alert(sellexample2.log);
 		let sellexample2Div = document.getElementById("sellexample2");
 		let html2 = sellexample2.html;
 		html2 = html2.substr(0, html2.length-7); // remove '<br/>'
 		sellexample2Div.innerHTML = html2;
-
-
-		
-
 
 	</script>
 	<?php include 'body_scripts.php'; ?>

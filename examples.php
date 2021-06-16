@@ -25,7 +25,8 @@
 					<a href="examples.php?task=ma1-6.txt">Lineare Algebra 1</a> &middot; 
 
 					<a href="examples.php?task=ma2-1.txt">Komplexe Zahlen</a> &middot; 
-					<a href="examples.php?task=ma2-3.txt">Lineare Algebra 2</a>
+					<a href="examples.php?task=ma2-3.txt">Lineare Algebra 2</a> &middot; 
+					<a href="examples.php?task=ma2-4.txt">Funktionen von mehreren Variablen</a>
 
 					<h4>Programmierung in Java</h4>
 					<a href="examples.php?task=pi1-keywords.txt">Schlüsselworte</a> &middot;
@@ -72,7 +73,7 @@
 
 			<div class="col-12 p-0">
 				<p class="py-0 px-2">
-					<a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" onclick="">Help</a>
+					<a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" onclick="">Help</a>
 				</p>
 				<div class="row">
 					<div class="col">
@@ -134,7 +135,7 @@
 		});
 		editor.setOption("theme", "idea");	
 
-		var sell = null, sellPlayground = null;
+		var sellInst = null, sellPlayground = null;
 		
 		function goBack() {
 			window.history.back();
@@ -145,26 +146,34 @@
 			if(task == null)
 				task = "ma1-1.txt";
 			let timestamp = ts = Math.round((new Date()).getTime() / 1000);
-			task = 'examples/' + task + '?time=' + timestamp;
+			task = 'node_modules/sellquiz/examples/' + task + '?time=' + timestamp;
 			$.ajax({
 				url: task,
 				type: 'GET',
 				success: function(data,status,xhr) {
 					let q = xhr.responseText;
-					sell = new Sell("de", "sell");
-					sell.editButton = true;
-					if(!sell.importQuestions(q))
-						alert(sell.log);
+					
+					// remove first two lines (which are used as comments)
+					if(q.startsWith("%")) {
+						let lines = q.split("\n");
+						lines.splice(0, 2);
+						q = lines.join('\n');
+					}
+
+					sellInst = new sell.Sell("de", "sellInst");
+					sellInst.editButton = true;
+					if(!sellInst.importQuestions(q))
+						alert(sellInst.log);
 					let sellQuestionsDiv = document.getElementById("sellQuestions");
-					sellQuestionsDiv.innerHTML = sell.html;
+					sellQuestionsDiv.innerHTML = sellInst.html;
 
 					editSellQuestion(0);
 					
 					setTimeout(function(){
 						MathJax.typeset();
-						sell.updateMatrixInputs();
+						sellInst.updateMatrixInputs();
 					},
-					750);
+					500);
 				},
 				error: function(xhr, status, error) {
 					alert("ERROR: " + xhr.responseText);
@@ -173,7 +182,7 @@
 		});
 
 		function editSellQuestion(qidx) {
-			let src = sell.questions[qidx].src.trim();
+			let src = sellInst.questions[qidx].src.trim();
 			editor.getDoc().setValue(src);
 			play();
 			window.scrollTo(0, 0);
@@ -182,7 +191,7 @@
 		function play() {
 			let sellPlaygroundQuestionsDiv = document.getElementById("sellPlaygroundQuestions");
 			let code = editor.getDoc().getValue();
-			sellPlay = new Sell("de", "sellPlay");
+			sellPlay = new sell.Sell("de", "sellPlay");
 			if(!sellPlay.importQuestions(code)) {
 				let err = sellPlay.log.replaceAll("\n","<br/>");
 				sellPlaygroundQuestionsDiv.innerHTML = '<p class="text-danger"><b>' + err + '</b></p>';

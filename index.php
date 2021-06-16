@@ -62,7 +62,9 @@
 				<div class="card rounded p-2 shadow-lg bg-light h-100">
 					<h2 class="fw-lighter text-center py-0">DOWNLOAD</h2>
 					<p class="px-2 py-0 fw-light">
-						Find the latest release on <a href="https://gitlab.com/hm4mint/sell/-/releases" target="_blank">GitLab</a>.
+						Install SELL via <code>npm install sellquiz</code>.
+						Find a simple usage example on <a href="https://github.com/sellquiz/sellquiz-standalone" target="_blank">Github</a>.
+						<!--Find the latest release on <a href="https://github.com/sellquiz/" target="_blank">Github</a> or -->
 					</p>
 				</div>
 			</div>
@@ -103,7 +105,7 @@
 			<div class="col-lg-6 h-100 text-dark p-2">
 				<p class="m-1 p-0">
 					<span class="dropdown">
-						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Examples
 						</button>
 						<span class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -129,7 +131,7 @@
 
 			<div class="col-12 p-0">
 				<p class="py-0 px-2">
-					<a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" onclick="">Help</a>
+					<a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" onclick="">Help</a>
 				</p>
 				<div class="row">
 					<div class="col">
