@@ -25,7 +25,7 @@
 				<a class="nav-link fw-light text-white" href="tut.php">Tutorial</a>
 			</li>-->
 			<li class="nav-item">
-				<a href="https://gitlab.com/hm4mint/sell/" target="_blank"><img src="img/logo-gitlab.png" style="height:32px"/></a>
+				&nbsp;<a href="https://github.com/sellquiz" target="_blank"><img src="img/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png" style="height:32px"/></a>
 			</li>
 		</ul>
 	</div>
