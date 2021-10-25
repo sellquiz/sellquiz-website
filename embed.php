@@ -3,21 +3,18 @@
 <?php include 'head.php'; ?>
 <body>
 	<?php include 'nav.php'; ?>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-sm">
-				<br/>
-				<blockquote class="blockquote text-center">
-					<h1><b>Integration</b></h1>
-					SELL qeuestions can be integrated into existing websites with only a few steps.
-				</blockquote>
-			</div>
-		</div>
-	</div>
-
+    <br/>
+    <div class="container">
+		<div class="row text">
+            <p class="text-center">
+                <span class="display-4">SELL &mdash; Integration</span><br/>
+            </p>
+            <p class="text-center">
+            SELL qeuestions can be integrated into existing websites with only a few steps.
+            </p>
+        </div>
+    </div>
 	<br/>
-
 	<div class="container">
 		<div class="row">
 			<div class="col-sm">

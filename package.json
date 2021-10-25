@@ -6,6 +6,6 @@
     "jquery": "^3.6.0",
     "mathjax": "^3.1.4",
     "mathjs": "^9.4.2",
-    "sellquiz": "^1.0.0"
+    "sellquiz": "^3.0.3"
   }
 }

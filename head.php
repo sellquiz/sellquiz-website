@@ -25,14 +25,18 @@
 
 	<script src="node_modules/mathjs/lib/browser/math.js" type="text/javascript"></script>
 
-	<script src="node_modules/sellquiz/build/js/sell.min.js?version=<?php $date = date_create(); echo date_timestamp_get($date); ?>"></script>
-
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 
 	<link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
 	<link rel="stylesheet" href="node_modules/codemirror/theme/idea.css">
 	<script src="node_modules/codemirror/lib/codemirror.js"></script>
+    <script src="node_modules/codemirror/mode/clike/clike.js"></script>
 	<script src="node_modules/codemirror/addon/mode/simple.js"></script>
+
+    <script src="node_modules/sellquiz/build/js/sellquiz.min.js?version=<?php $date = date_create(); echo date_timestamp_get($date); ?>"></script>
+    <script src="node_modules/sellquiz/build/js/sellquiz.ide.min.js?version=<?php $date = date_create(); echo date_timestamp_get($date); ?>"></script>
+
+    <script src="index-examples.js"></script> <!-- TODO: only used in index.php -->
 
 	<style>
 		/* visible tabs:   https://github.com/codemirror/CodeMirror/blob/master/demo/visibletabs.html  */

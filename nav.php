@@ -18,9 +18,9 @@
 			<li class="nav-item">
 				<a class="nav-link fw-light text-white" href="embed.php">Integration</a>
 			</li>
-			<li class="nav-item">
+			<!--<li class="nav-item">
 				<a class="nav-link fw-light text-white" href="spec.php">Specification</a>
-			</li>
+			</li>-->
 			<!--<li class="nav-item">
 				<a class="nav-link fw-light text-white" href="tut.php">Tutorial</a>
 			</li>-->

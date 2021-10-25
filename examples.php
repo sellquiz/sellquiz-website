@@ -3,18 +3,22 @@
 <?php include 'head.php'; ?>
 <body>
 	<?php include 'nav.php'; ?>
-
-
+    <br/>
+    <div class="container">
+		<div class="row text">
+            <p class="text-center">
+                <span class="display-4">SELL &mdash; Examples</span><br/>
+            </p>
+            <p class="text-center">
+                <span class="lead">Click on the &raquo;Edit&laquo; button in one of the examples below.</span>
+                <br/>
+                <span class="lead">&#8212; Examples in English will be provided soon. &#8212;</span>
+            </p>
+        </div>
+    </div>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm">
-
-				<br/>
-				<blockquote class="blockquote text-center">
-					<h1><b>Examples</b></h1>
-					<i>Examples in English will be provided soon.</i>
-				</blockquote>
-
 				<p class="text-center">
 					<h4>Höhere Mathematik</h4>
 					<a href="examples.php?task=ma1-1.txt">Grundlagen</a> &middot;
@@ -23,11 +27,10 @@
 					<a href="examples.php?task=ma1-4.txt">Differentialrechnung</a> &middot; 
 					<a href="examples.php?task=ma1-5.txt">Integralrechnung</a> &middot; 
 					<a href="examples.php?task=ma1-6.txt">Lineare Algebra 1</a> &middot; 
-
 					<a href="examples.php?task=ma2-1.txt">Komplexe Zahlen</a> &middot; 
 					<a href="examples.php?task=ma2-3.txt">Lineare Algebra 2</a> &middot; 
 					<a href="examples.php?task=ma2-4.txt">Funktionen von mehreren Variablen</a>
-
+                    <br/><br/>
 					<h4>Programmierung in Java</h4>
 					<a href="examples.php?task=pi1-keywords.txt">Schlüsselworte</a> &middot;
 					<a href="examples.php?task=pi1-ctrl.txt">Kontrollstrukturen</a> &middot;
@@ -35,51 +38,33 @@
 					<a href="examples.php?task=pi1-methods.txt">Methoden</a> &middot;
 					<a href="examples.php?task=pi1-arrays.txt">Arrays</a> &middot;
 					<a href="examples.php?task=pi1-oop.txt">Objekte und Klassen</a>
-	
 					<br/><br/>
 				</p>
 			</div>
-
 		</div>
 	</div>
-
 	<div class="container">
-		<div class="row">
-			<div class="col pb-3">
-				<!--<h2>Playground &nbsp; <small><a href="examples.php">More examples</a></small></h2>-->
-				<!--To evaluate the following questions, click on the arrow.
-				Click on <b>edit</b> to put questions into the playground.-->
-				<p class="text-center text-secondary">(Also refer to examples below playground!)</p>
-			</div>
-		</div>
 		<div class="row bg-light p-2 rounded shadow-lg" style="border-style: solid;">
 			<div class="col-lg-12 h-100 text-dark p-2">
-				<h3>Playground</h3> 
-				<ul>
-					<li>Feel free to edit any of the questions below this box: Click on the "edit"-button to import it into this playground.</li>
-					<li>Click "Run!" to apply changes.</li>
-				</ul>
+                <a id="playground-anchor">
+				    <h3>Playground</h3> 
+                </a>
 				<div class="card py-0 px-0 mt-3">
 					<textarea id="mycode" class="" rows="8" style="resize: none;"></textarea>
 				</div>
-				<p class="m-1 p-0">
-					<button type="button" class="btn btn-success" onclick="play();">Run!</button>
-				</p>
 			</div>
 			<div class="col-lg-12 h-100 text-dark">
-				<!--<p class="text-center py-1" style="font-size: 135%;">Generated Question</p>-->
 				<div class="col py-2 px-0 text-dark" id="sellPlaygroundQuestions"></div>
 			</div>
-
 			<div class="col-12 p-0">
 				<p class="py-0 px-2">
+                    <button type="button" class="btn btn-primary" onclick="compile();">Update</button>
+                    <!--<button type="button" class="btn btn-primary" onclick="evaluate();">Evaluate</button>-->
 					<a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" onclick="">Help</a>
 				</p>
 				<div class="row">
 					<div class="col">
 						<div class="collapse multi-collapse px-2 pt-1 pb-0" id="multiCollapseExample1">
-
-							<!--Key aspects:-->
 							<ul>
 								<li>
 									The first line is used as <b>headline</b>.
@@ -106,17 +91,13 @@
 								</li>
 							</ul>
 							For detailed information, visit the <a href="tut.php">tutorials</a> and <a href="spec.php">language specification</a>.
-
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
-
-	<?php separator(); ?>
-
+    <br/>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm">
@@ -124,22 +105,21 @@
 			</div>
 		</div>
 	</div>
-
-	<?php separator(); ?>
-
 	<script>
-
+        // go to last site behavior
+        function goBack() {
+			window.history.back();
+		}
+        // create CodeMirror editor
 		var editor = CodeMirror.fromTextArea(document.getElementById("mycode"), {
 			lineNumbers: true,
 			mode: "sellmode"
 		});
 		editor.setOption("theme", "idea");	
 
-		var sellInst = null, sellPlayground = null;
+		//var sellInst = null, sellPlayground = null;
 		
-		function goBack() {
-			window.history.back();
-		}
+        
 		$( document ).ready(function() {
 			const params = new URLSearchParams(window.location.search);
 			let task = params.get('task');
@@ -152,64 +132,60 @@
 				type: 'GET',
 				success: function(data,status,xhr) {
 					let q = xhr.responseText;
-					
 					// remove first two lines (which are used as comments)
 					if(q.startsWith("%")) {
 						let lines = q.split("\n");
 						lines.splice(0, 2);
 						q = lines.join('\n');
 					}
-
-					sellInst = new sell.Sell("de", "sellInst");
-					sellInst.editButton = true;
-					if(!sellInst.importQuestions(q))
-						alert(sellInst.log);
-					let sellQuestionsDiv = document.getElementById("sellQuestions");
-					sellQuestionsDiv.innerHTML = sellInst.html;
-
+                    // compile and render questions
+                    sellquiz.reset();
+                    sellquiz.setLanguage("en");
+                    sellquiz.setServicePath("node_modules/sellquiz/services/");
+                    let sellQuestionsDiv = document.getElementById("sellQuestions");
+                    if(sellquiz.autoCreateQuiz(q, sellQuestionsDiv, true) == false)
+                        alert(sellquiz.getErrorLog()); // TODO!!
+                    else
+                        setTimeout(function(){MathJax.typeset();},750);
+                    // load the first question into the playground
 					editSellQuestion(0);
-					
-					setTimeout(function(){
-						MathJax.typeset();
-						sellInst.updateMatrixInputs();
-					},
-					500);
 				},
 				error: function(xhr, status, error) {
 					alert("ERROR: " + xhr.responseText);
 				}
 			});
 		});
-
+        // clicked on "Edit" button within a question
 		function editSellQuestion(qidx) {
-			let src = sellInst.questions[qidx].src.trim();
+            let src = sellquiz.getQuestionSource(qidx).trim();
 			editor.getDoc().setValue(src);
-			play();
+			compile();
 			window.scrollTo(0, 0);
 		}
-
-		function play() {
-			let sellPlaygroundQuestionsDiv = document.getElementById("sellPlaygroundQuestions");
-			let code = editor.getDoc().getValue();
-			sellPlay = new sell.Sell("de", "sellPlay");
-			if(!sellPlay.importQuestions(code)) {
-				let err = sellPlay.log.replaceAll("\n","<br/>");
-				sellPlaygroundQuestionsDiv.innerHTML = '<p class="text-danger"><b>' + err + '</b></p>';
-			} else {
-				sellPlaygroundQuestionsDiv.innerHTML = sellPlay.html;
-				sellPlay.updateMatrixInputs();
-				setTimeout(function(){MathJax.typeset();},750);
-			}
+        let compile_function_has_run = false;
+        // compile a SELL question in playground
+		function compile() {
+            if(compile_function_has_run == false)
+                compile_function_has_run = true;
+            else {
+                // TODO: remove last question to prevent memory leak.
+                // TODO: there is currently no remove function in the sellquiz-API.
+            }
+			let code = editor.getDoc().getValue();		
+            let qIdx = sellquiz.createQuestion(code);
+            let sellPlaygroundQuestionsDiv = document.getElementById("sellPlaygroundQuestions");
+            sellquiz.setQuestionHtmlElement(qIdx, sellPlaygroundQuestionsDiv);
+            if(qIdx < 0) {
+                let err = sellquiz.getErrorLog().replaceAll("\n","<br/>");
+                sellPlaygroundQuestionsDiv.innerHTML = '<p class="text-danger"><b>' + err + '</b></p>';
+            }
+            else {
+                html = sellquiz.getQuestionHighLevelHTML(qIdx);
+                sellPlaygroundQuestionsDiv.innerHTML = html;
+                setTimeout(function(){MathJax.typeset();},750);
+            }
 		}
-
 	</script>
-
-
-	<!--<div id="content"></div>
-	<br/><br/>
-	<script>
-		//render_page("embed.txt", "Website Integration", "Rev: 0.1 &nbsp;&nbsp;&nbsp; Editor: Andreas Schwenk", 12);
-	</script>-->
 	<?php include 'footer.php'; ?>
 	<?php include 'body_scripts.php'; ?>
 </body>
