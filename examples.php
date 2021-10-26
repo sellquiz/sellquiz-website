@@ -32,6 +32,7 @@
 					<a href="examples.php?task=ma2-4.txt">Funktionen von mehreren Variablen</a>
                     <br/><br/>
 					<h4>Programmierung in Java</h4>
+                    <a href="examples.php?task=java.txt">Programme</a> &middot;
 					<a href="examples.php?task=pi1-keywords.txt">Schlüsselworte</a> &middot;
 					<a href="examples.php?task=pi1-ctrl.txt">Kontrollstrukturen</a> &middot;
 					<a href="examples.php?task=pi1-logic.txt">Aussagenlogische Operatoren</a> &middot;
@@ -176,12 +177,14 @@
             let sellPlaygroundQuestionsDiv = document.getElementById("sellPlaygroundQuestions");
             sellquiz.setQuestionHtmlElement(qIdx, sellPlaygroundQuestionsDiv);
             if(qIdx < 0) {
+                // error handling
                 let err = sellquiz.getErrorLog().replaceAll("\n","<br/>");
                 sellPlaygroundQuestionsDiv.innerHTML = '<p class="text-danger"><b>' + err + '</b></p>';
             }
             else {
                 html = sellquiz.getQuestionHighLevelHTML(qIdx);
                 sellPlaygroundQuestionsDiv.innerHTML = html;
+                sellquiz.refreshQuestion(qIdx);
                 setTimeout(function(){MathJax.typeset();},750);
             }
 		}
