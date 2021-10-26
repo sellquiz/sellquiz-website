@@ -40,6 +40,9 @@
 					<a href="examples.php?task=pi1-arrays.txt">Arrays</a> &middot;
 					<a href="examples.php?task=pi1-oop.txt">Objekte und Klassen</a>
 					<br/><br/>
+					<h4>Programmierung in Python</h4>
+                    <a href="examples.php?task=python.txt">Programme</a>
+                    <br/><br/>
 				</p>
 			</div>
 		</div>
